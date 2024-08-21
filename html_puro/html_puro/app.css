@@ -1,0 +1,43 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    background-color: rgb(221, 207, 142);
+    color: black;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.comment {
+    width: 500px;
+    padding: 30px;
+    margin: 10px;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+    box-shadow: 0 0 8px rgba(0,0,0,.5);
+}
+
+.comment .title {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: rgb(31, 31, 110);
+    margin-bottom: 20px;
+}
+
+.comment .comment-text {
+    font-size: 1em;
+    color: #333;
+}
+
+.comment .comment-signature {
+    font-size: .8em;
+    margin-top: 30px;
+    text-align: right;
+}
