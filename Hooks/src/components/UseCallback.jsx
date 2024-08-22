@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from 'react'
 
-
 function Lista({ resultados }) {
     const [listaItems, setListaItems] = useState([])
     useEffect(() => {
@@ -11,10 +10,6 @@ function Lista({ resultados }) {
         listaItems.map(item => <p key={item}>{item}</p>)
     )
 }
-
-
-
-
 
 
 export default function App() {
@@ -32,16 +27,12 @@ export default function App() {
         return [numero * 2, numero * 3, numero * 4]
     }, [numero])
 
-
-
-
     // tema da app
     const tema = {
         backgroundColor: temaEscuro ? "black" : "white",
         color: temaEscuro ? "white" : "black",
         height: "50vh"
     }
-
 
     return (
         <div style={tema}>
@@ -53,7 +44,5 @@ export default function App() {
             <hr />
             <Lista resultados={calculos} />  {/* Calculos não é um valor, mas sim uma função */}
         </div >
-
     )
-
 }

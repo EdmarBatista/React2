@@ -21,6 +21,8 @@ import UniqueID from "./components/UniqueID"
 import TemaClaroEscuro from "./components/TemaClaroEscuro"
 import Tabuada from "./components/Tabuada"
 import UseCallback from "./components/UseCallback"
+import Use_ID from "./components/Use_Id"
+import Varios from "./components/Varios"
 
 
 //import HookRef16 from './components/UseRef_16'
@@ -48,6 +50,8 @@ function App() {
             <TemaClaroEscuro />
             <Tabuada />
             <UseCallback />
+            <Use_ID />
+            <Varios />
         </>
     )
 }
