@@ -52,6 +52,7 @@ function App() {
             <Tabuada />
             <UseCallback />
             <Use_ID />
+            <Varios />
             <Bootstrap />
         </>
     )
