@@ -23,6 +23,7 @@ import Tabuada from "./components/Tabuada"
 import UseCallback from "./components/UseCallback"
 import Use_ID from "./components/Use_Id"
 import Varios from "./components/Varios"
+import Bootstrap from "./components/Bootstrap"
 
 
 //import HookRef16 from './components/UseRef_16'
@@ -51,7 +52,7 @@ function App() {
             <Tabuada />
             <UseCallback />
             <Use_ID />
-            <Varios />
+            <Bootstrap />
         </>
     )
 }
