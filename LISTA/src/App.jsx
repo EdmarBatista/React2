@@ -6,7 +6,7 @@ import { v4 as chave } from 'uuid'
 function App() {
 
     // states
-    const [contacto, setContacto] = useState({ nome: '', telefone: '' })
+    const [contacto, setContacto] = useState({ id: "", nome: '', telefone: '' })
     const [listaContactos, setListaContactos] = useState([])
 
     // useRef
@@ -37,7 +37,7 @@ function App() {
         }
 
         // Adicionar novo contato à lista
-        setListaContactos([...listaContactos, contacto])
+        setListaContactos([...listaContactos, { ...contacto, id: chave() }]) // usei um spread operator na lista no no objeto contacto
 
         // Limpar o concacto
         setContacto({ nome: '', telefone: '' })
@@ -73,11 +73,17 @@ function App() {
         setListaContactos([])
     }
 
-    // Remover um contacto da lista
-    function removerContacto(ctRemover){
-      //  console.log(ctRemover)
-      let tmp = listaContactos.filter(ct => ct.nome!==ctRemover.nome && ct.telefone !== ctRemover.telefone) // Constroi uma lista temporária sem o elemento com o nome e telefone passado
-      setListaContactos(tmp)
+    /*    // Remover um contacto da lista por chave e valor
+       function removerContacto(ctRemover){
+         //  console.log(ctRemover)
+         let tmp = listaContactos.filter(ct => ct.nome!==ctRemover.nome && ct.telefone !== ctRemover.telefone) // Constroi uma lista temporária sem o elemento com o nome e telefone passado
+         setListaContactos(tmp)
+   
+       } */
+
+    function removerContacto(id) {
+        let tmp = listaContactos.filter(ct => ct.id !== id)
+        setListaContactos(tmp)
 
     }
 
@@ -100,7 +106,11 @@ function App() {
             {/* <ListaContactos listaContactos={listaContactos} /> */}
             {/* Apresentação da lista de contactos  */}
             {listaContactos.map(ct => {
-                return <Contacto key={chave()} nome={ct.nome} telefone={ct.telefone} remover={removerContacto}/>
+
+                // return <Contacto key={chave()} nome={ct.nome} telefone={ct.telefone} remover={removerContacto} />   // Usado quando eu removia os elemntos da lista por meio da nome  e telefone
+                return <Contacto key={ct.id} id = {ct.id} nome={ct.nome} telefone={ct.telefone} remover={removerContacto} />
+
+
             })}
 
 
