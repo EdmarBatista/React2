@@ -67,9 +67,17 @@ function App() {
         localStorage.setItem('meus_contactos', JSON.stringify(listaContactos))
     }, [listaContactos])
 
+    // Limpar toda a lista
     function limparStorage() {
         // localStorage.clear('meus_contactos')  // Se eu fizrer assim quando eu modificar um contato vai adicionar tudo denovo
         setListaContactos([])
+    }
+
+    // Remover um contacto da lista
+    function removerContacto(ctRemover){
+      //  console.log(ctRemover)
+      let tmp = listaContactos.filter(ct => ct.nome!==ctRemover.nome && ct.telefone !== ctRemover.telefone) // Constroi uma lista temporária sem o elemento com o nome e telefone passado
+      setListaContactos(tmp)
 
     }
 
@@ -92,7 +100,7 @@ function App() {
             {/* <ListaContactos listaContactos={listaContactos} /> */}
             {/* Apresentação da lista de contactos  */}
             {listaContactos.map(ct => {
-                return <Contacto key={chave()} nome={ct.nome} telefone={ct.telefone} />
+                return <Contacto key={chave()} nome={ct.nome} telefone={ct.telefone} remover={removerContacto}/>
             })}
 
 

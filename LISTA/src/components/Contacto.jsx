@@ -6,6 +6,7 @@ export default function Contacto(props) {
         <>
            <div>
                 {props.nome} - {props.telefone}
+                <button onClick={()=>{props.remover({nome:props.nome, telefone:props.telefone})}}>Remover</button>
             </div>
         </>
     )
