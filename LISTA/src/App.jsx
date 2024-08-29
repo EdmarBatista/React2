@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react"
+import React, { useState, useRef, useEffect } from "react"
 import ListaContactos from "./components/ListaContacto"
 import Contacto from "./components/Contacto"
 
@@ -46,6 +46,33 @@ function App() {
         inputNome.current.focus()
     }
 
+    function enterAdicionarContacto(event) {
+        if (event.code === "Enter") {
+            adicionarContato()
+        }
+    }
+
+    // Carregar a listaContactos do localStorage
+    // A ordem dos useEffects importa, então tive que colocar esse antes do useEffect abaixo
+    useEffect(() => {
+        if (localStorage.getItem('meus_contactos') !== null) {
+            setListaContactos(JSON.parse(localStorage.getItem("meus_contactos")))
+        }
+    }, []) // Vai ser executado quando a aplicação for iniciada
+
+
+    // Persistência do state
+    // Atualizar a lista de contactos no localStorage
+    useEffect(() => {
+        localStorage.setItem('meus_contactos', JSON.stringify(listaContactos))
+    }, [listaContactos])
+
+    function limparStorage() {
+        // localStorage.clear('meus_contactos')  // Se eu fizrer assim quando eu modificar um contato vai adicionar tudo denovo
+        setListaContactos([])
+
+    }
+
 
     return (
         <>
@@ -57,9 +84,10 @@ function App() {
             </div>
             <div>
                 <label >Telefone:<br /></label>
-                <input type="text" ref={inputTelefone} onChange={definirTelefone} value={contacto.telefone} />
+                <input type="text" ref={inputTelefone} onChange={definirTelefone} onKeyUp={enterAdicionarContacto} value={contacto.telefone} />
             </div>
             <button onClick={adicionarContato}>Adicionar Concacto</button>
+            <button onClick={limparStorage}>Limpar Lista</button>
             <hr />
             {/* <ListaContactos listaContactos={listaContactos} /> */}
             {/* Apresentação da lista de contactos  */}
