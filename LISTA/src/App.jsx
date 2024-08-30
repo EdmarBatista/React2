@@ -4,6 +4,21 @@ import Contacto from "./components/Contacto"
 import './App.css'
 import { v4 as chave } from 'uuid'
 
+/* Para usar os incones do fonte awasson tenho que usar esses dois imports que estão no site deles (pesquisei fontawason react no google)
+
+Instalei usando os comandos:
+
+npm i --save @fortawesome/fontawesome-svg-core
+npm install --save @fortawesome/free-solid-svg-icons
+npm install --save @fortawesome/react-fontawesome
+
+
+E copie os exemplos do site
+ */
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faList, faTrash, faCirclePlus } from '@fortawesome/free-solid-svg-icons'
+
 
 
 function App() {
@@ -101,7 +116,7 @@ function App() {
             <div className="cantainer-fluid titulo">
                 <div className="row">
                     <div className="col text-center">
-                        <h4 className="text-center">LISTA DE CONTATOS</h4>
+                        <h4 className="text-center"><FontAwesomeIcon icon={faList} />  LISTA DE CONTATOS</h4>
                     </div>
                 </div>
             </div>
@@ -131,10 +146,16 @@ function App() {
 
                                 <div className="row mt-3 ">
                                     <div className="col text-start">
-                                        <button onClick={limparStorage} className="btn btn-outline-warning">Limpar Lista</button>
+                                        <button onClick={limparStorage} className="btn btn-outline-warning">
+                                            <FontAwesomeIcon icon={faTrash} className="me-2"/>
+                                            Limpar Lista
+                                            </button>
                                     </div>
                                     <div className="col text-end">
-                                        <button onClick={adicionarContato}  className="btn btn-outline-info">Adicionar Concacto</button>
+                                        <button onClick={adicionarContato} className="btn btn-outline-info">
+                                            <FontAwesomeIcon icon={faCirclePlus} className="me-2"/>
+                                              Adicionar Concacto
+                                        </button>
                                     </div>
                                 </div>
 
